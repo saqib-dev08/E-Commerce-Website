@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h2>Admin - Add Products</h2>
+
+    <form onsubmit="newProducts(event)">
+        <select name="Categories" id="categories" required>
+            <option value="">Select Category</option>
+            <option value="Mobile Phones">Mobile Phones</option>
+            <option value="Computers">Computers</option>
+            <option value="Laptops">Laptops</option>
+            <option value="Smart Watches">Smart Watches</option>
+            <option value="Headphones">Headphones</option>
+            <option value="Accesories">Accesories</option>
+        </select>
+        <input type="text" id="productName" placeholder="Product Name" required>
+        <input type="number" id="productPrice" placeholder="Price" required>
+        <input type="url" id="productUrl" placeholder="Image URL" required>
+        <input type="submit" id="addBtn" value="Add Product">
+    </form>
+
+</body>
+<script>
+
+    function newProducts(event) {
+        event.preventDefault();
+
+        let category = document.getElementById('categories');
+        console.log(category);
+        let productName = document.getElementById('productName');
+        console.log(productName);
+        let productPrice = document.getElementById('productPrice');
+        console.log(productPrice);
+        let productImg = document.getElementById('productUrl');
+        console.log(productImg);
+        let addBtn = document.getElementById('addBtn');
+
+
+        let storage = JSON.parse(localStorage.getItem('Products'));
+        console.log(storage, 'storage');
+
+        let newProduct = {
+            Name: productName.value,
+            Price: productPrice.value,
+            Image: productImg.value,
+            Category: category.value,
+        };
+        console.log(newProduct);
+storage.push(newProduct);
+        console.log(storage, 'storage'); 
+localStorage.setItem("Products", JSON.stringify(storage));
+category.value = "";
+productName.value = "";
+productPrice.value = "";
+productImg.value = "";
+    }
+</script>
+
+</html>

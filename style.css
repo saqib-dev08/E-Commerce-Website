@@ -20,6 +20,7 @@ nav{
     top: 0px;
     width: 90%;
     background-color: white;
+    z-index: 1;
 
 
 }
@@ -43,6 +44,8 @@ ul{
         a:hover{
             cursor: pointer;
             color: rgb(58, 58, 58);
+     transition: 0.3s ease;
+
         }
         .pages > i{
             display: none;
@@ -92,6 +95,8 @@ h2{
     background-color: green;
     color: white;
     cursor: pointer;
+     transition: 0.3s ease;
+
 }
 .fa-cart-shopping{
     margin-right: 6px;
@@ -123,14 +128,18 @@ p{
    
     background-color: rgb(0, 93, 155);
     cursor: pointer;
+     transition: 0.3s ease;
     
 }
 .cat1{
     width: 100px;
     height: 100px;
+    position: relative;
 }
-.cat:hover{
+.cat1:hover{
     cursor: pointer;
+     transition: 0.2s ease;
+    transform: scale(110%);
 }
 .category{
     display: flex;
@@ -142,6 +151,12 @@ p{
 .para{
     width: 30px;
 }
+.products-txt{
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
 
 
 
