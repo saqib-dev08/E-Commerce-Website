@@ -5,6 +5,7 @@ function menu() {
         pages.style.display = "none";
     } else {
         pages.style.display = "block"
+
     }
 };
 
@@ -70,4 +71,16 @@ let products = [{
     Category: "Accesories"
 }];
 localStorage.setItem('Products', JSON.stringify(products));
+let storage = JSON.parse(localStorage.getItem('Products'));
+console.log(storage);
+let card = document.getElementById("card");
 
+for(i=0; i<storage.length; i++){
+    console.log(storage[i], 'storage');
+card.innerHTML += `
+   <img src="${storage[i].Image}">
+                <h5 class="card-title">${storage[i].Name}</h5>
+                <p class="card-text">Price: ${storage[i].Price}</p>
+                <a href="#" class="btn btn-primary">Add to Cart</a>
+`
+};

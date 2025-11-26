@@ -23,7 +23,7 @@
         </select>
         <input type="text" id="productName" placeholder="Product Name" required>
         <input type="number" id="productPrice" placeholder="Price" required>
-        <input type="url" id="productUrl" placeholder="Image URL" required>
+        <input type="text" id="productUrl" placeholder="Image URL" required> 
         <input type="submit" id="addBtn" value="Add Product">
     </form>
 
@@ -44,8 +44,8 @@
         let addBtn = document.getElementById('addBtn');
 
 
-        let storage = JSON.parse(localStorage.getItem('Products'));
-        console.log(storage, 'storage');
+        let storage = JSON.parse(localStorage.getItem('Products')) || [];
+        console.log(storage, 'storage1');
 
         let newProduct = {
             Name: productName.value,
@@ -55,7 +55,7 @@
         };
         console.log(newProduct);
 storage.push(newProduct);
-        console.log(storage, 'storage'); 
+        console.log(storage, 'storage2'); 
 localStorage.setItem("Products", JSON.stringify(storage));
 category.value = "";
 productName.value = "";

@@ -64,6 +64,7 @@ ul{
         
         
         #home{
+           
             background-color: #ffc0cbab;
             height: 520px;
             
@@ -175,6 +176,7 @@ ul{
     padding: 20px 30px 8px 30px;
     border-radius: 5px;
     background-color: white;
+    transition: 0.7s ease-in;
 }
 li{
     padding-bottom: 17px;
