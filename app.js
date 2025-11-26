@@ -9,7 +9,7 @@ function menu() {
     }
 };
 
-let products = [{
+/*let products = [{
     Name: "Smart Watch Ultra 3",
     Price: "200",
     Image: "Assets/e523dc116788e6efca014015d9bb336e.jpg",
@@ -69,18 +69,69 @@ let products = [{
     Price: "1500",
     Image: "Assets/e10fc3b40a282173d7504b0d3c6c990c.jpg",
     Category: "Accesories"
-}];
-localStorage.setItem('Products', JSON.stringify(products));
+}];*/
+
 let storage = JSON.parse(localStorage.getItem('Products'));
 console.log(storage);
 let card = document.getElementById("card");
 
-for(i=0; i<storage.length; i++){
-    console.log(storage[i], 'storage');
-card.innerHTML += `
-   <img src="${storage[i].Image}">
-                <h5 class="card-title">${storage[i].Name}</h5>
-                <p class="card-text">Price: ${storage[i].Price}</p>
-                <a href="#" class="btn btn-primary">Add to Cart</a>
+if (storage) {
+    for (i = 0; i < 6; i++) {
+        console.log(storage[i], 'storage');
+        card.innerHTML += `
+<div id = "products">
+   <img src="${storage[i].Image}" class="product-img"/>
+   <div class="card-title">
+                <b><h4 class="card-name">${storage[i].Name}</h4>
+                <p class="card-text">Price: $${storage[i].Price}</p></b>
+                </div>
+<div class="product-reviews">
+                    <div class="product-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>  
+                    </div>
+                    <p>4.5+ Reviews</p>
+                </div>                
+                </div>
 `
+    };
+    let productsDiv = document.getElementById("products");
+
+    let viewBtn = document.createElement("button");
+    viewBtn.setAttribute("id", "viewBtn");
+    viewBtn.innerHTML = "View More";
+    productsDiv.appendChild(viewBtn);
+viewBtn.addEventListener("click", function(){
+    for (i = 0; i < storage.length; i++) {
+        console.log(storage[i], 'storage');
+        card.innerHTML += `
+<div id = "products">
+   <img src="${storage[i].Image}" class="product-img"/>
+   <div class="card-title">
+                <b><h4 class="card-name">${storage[i].Name}</h4>
+                <p class="card-text">Price: $${storage[i].Price}</p></b>
+                </div>
+<div class="product-reviews">
+                    <div class="product-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>  
+                    </div>
+                    <p>4.5+ Reviews</p>
+                </div>                
+                </div>
+`
+    };
+    viewBtn.innerHTML = "View less";
+})
+
+
+} else {
+    card.innerHTML = `
+<h3>No products found!</h3>`
 };
